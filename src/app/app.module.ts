@@ -1,10 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
 
-import { AppComponent } from './app.component';
-import {NotesModule} from './notes/notes.module';
-import {AppRoutingModule} from './app-routing.module';
+import { AppComponent } from "./app.component";
+import {NotesModule} from "./notes/notes.module";
+import {AppRoutingModule} from "./app-routing.module";
+import {NotesService} from "./notes/notes.service";
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import {AppRoutingModule} from './app-routing.module';
     AppRoutingModule,
     NotesModule
   ],
-  providers: [],
+  providers: [NotesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
