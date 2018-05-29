@@ -19,7 +19,6 @@ const notesRoutes: Routes = [
       [
         {
           path: "", component: NotesComponent, children: [
-            // {path: "", component: NoteStartComponent},
             {path: "new", component: NoteEditComponent},
             {path: ":id", component: NoteDetailComponent},
             {path: ":id/edit", component: NoteEditComponent}
