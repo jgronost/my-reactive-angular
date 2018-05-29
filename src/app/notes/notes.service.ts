@@ -1,16 +1,17 @@
 import { Injectable } from "@angular/core";
 import {Note} from "./note";
-import {not} from 'rxjs/util/not';
+import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class NotesService {
+  notesChanged = new Subject<Note[]>();
 
   private notes = [ new Note("The very first note"),
     new Note("Yet another note"),
-  new Note("And the next one, like third or so"),
-  new Note("I stop counting them")];
+    new Note("And the next one, like third or so"),
+    new Note("I stop counting them")];
 
-   getNotes(): Note[] {
+  getNotes(): Note[] {
     return this.notes.slice();
   }
 
@@ -20,10 +21,17 @@ export class NotesService {
 
   addNote(note: Note) {
      this.notes.push(note);
+     this.notesChanged.next(this.notes.slice());
   }
 
   updateNote(note: Note, index: number) {
      this.notes[index] = note;
+     this.notesChanged.next(this.notes.slice());
+  }
+
+  deleteNote(index: number) {
+    this.notes.splice(index, 1);
+    this.notesChanged.next(this.notes.slice());
   }
 
 }

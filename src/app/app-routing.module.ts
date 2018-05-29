@@ -1,17 +1,13 @@
 import { NgModule } from "@angular/core";
-import {RouterModule, Routes} from "@angular/router";
-import {NotesComponent} from "./notes/notes.component";
-import {NoteEditComponent} from "./notes/note-edit/note-edit.component";
+import {PreloadAllModules, RouterModule, Routes} from "@angular/router";
 
 const appRoutes: Routes = [
-  {path: "", component: NotesComponent},
-  {path: ":id", component: NoteEditComponent}
+  { path: "", redirectTo: "notes", pathMatch: "full" },
+  {path: "notes", loadChildren: "./notes/notes.module#NotesModule"}
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(appRoutes)
-  ],
+  imports: [RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})],
   declarations: [],
   exports: [RouterModule]
 })

@@ -3,7 +3,6 @@ import { NgModule } from "@angular/core";
 
 
 import { AppComponent } from "./app.component";
-import {NotesModule} from "./notes/notes.module";
 import {AppRoutingModule} from "./app-routing.module";
 import {NotesService} from "./notes/notes.service";
 
@@ -15,7 +14,6 @@ import {NotesService} from "./notes/notes.service";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NotesModule
   ],
   providers: [NotesService],
   bootstrap: [AppComponent]
