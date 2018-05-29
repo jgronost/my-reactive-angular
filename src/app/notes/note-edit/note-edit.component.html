@@ -1,3 +1,39 @@
-<p>
-  note-edit works!
-</p>
+    <form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+      <div class="col-xs-12">
+        <button type="submit" class="btn btn-success"
+                [disabled]="!noteForm.valid"
+        >Save
+        </button>
+        <button type="button" class="btn btn-danger"
+                (click)="onCancel()"
+        >Cancel
+        </button>
+      </div>
+      </div>
+      <hr>
+      <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input id="title" class="form-control"
+                 type="text"
+                 formControlName="title"
+          >
+        </div>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea id="content"
+                    class="form-control"
+                    formControlName="content"
+          >
+          </textarea>
+        </div>
+      </div>
+      </div>
+    </form>
+
