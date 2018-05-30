@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import {Note} from "./note";
-import {Subject} from "rxjs/Subject";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Observable} from "rxjs/Observable";
 
