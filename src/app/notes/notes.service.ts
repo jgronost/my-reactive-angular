@@ -10,9 +10,9 @@ export class NotesService {
     new Note("And the next one, like third or so"),
     new Note("I stop counting them")];
 
-  notesChanged = new BehaviorSubject<Note[]>(this.notesList);
+  private notesChanged = new BehaviorSubject<Note[]>(this.notesList);
 
-  public readonly notes: Observable<Note[]> = this.notesChanged.asObservable();
+  readonly notes: Observable<Note[]> = this.notesChanged.asObservable();
 
   getNote(index: number): Note {
      return this.notesList[index];
