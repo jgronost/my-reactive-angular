@@ -4,12 +4,12 @@ import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class NotesService {
-  notesChanged = new Subject<Note[]>();
-
   private notes = [ new Note("The very first note"),
     new Note("Yet another note"),
     new Note("And the next one, like third or so"),
     new Note("I stop counting them")];
+
+  notesChanged = new Subject<Note[]>();
 
   getNotes(): Note[] {
     return this.notes.slice();
