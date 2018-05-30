@@ -19,8 +19,7 @@ export class NoteListComponent implements OnInit, OnDestroy {
               private currentRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    this.subscription = this.noteService.notesChanged.subscribe((notes: Note[]) => this.notes = notes);
-    this.notes = this.noteService.getNotes();
+    this.subscription = this.noteService.notes.subscribe((notes: Note[]) => this.notes = notes);
   }
 
   ngOnDestroy(): void {
