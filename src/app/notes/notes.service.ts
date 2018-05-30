@@ -1,37 +1,37 @@
 import { Injectable } from "@angular/core";
 import {Note} from "./note";
 import {Subject} from "rxjs/Subject";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class NotesService {
-  private notes = [ new Note("The very first note"),
+  private notesList = [ new Note("The very first note"),
     new Note("Yet another note"),
     new Note("And the next one, like third or so"),
     new Note("I stop counting them")];
 
-  notesChanged = new Subject<Note[]>();
+  notesChanged = new BehaviorSubject<Note[]>(this.notesList);
 
-  getNotes(): Note[] {
-    return this.notes.slice();
-  }
+  public readonly notes: Observable<Note[]> = this.notesChanged.asObservable();
 
   getNote(index: number): Note {
-     return this.notes[index];
+     return this.notesList[index];
   }
 
   addNote(note: Note) {
-     this.notes.push(note);
-     this.notesChanged.next(this.notes.slice());
+     this.notesList.push(note);
+     this.notesChanged.next(this.notesList.slice());
   }
 
   updateNote(note: Note, index: number) {
-     this.notes[index] = note;
-     this.notesChanged.next(this.notes.slice());
+     this.notesList[index] = note;
+     this.notesChanged.next(this.notesList.slice());
   }
 
   deleteNote(index: number) {
-    this.notes.splice(index, 1);
-    this.notesChanged.next(this.notes.slice());
+    this.notesList.splice(index, 1);
+    this.notesChanged.next(this.notesList.slice());
   }
 
 }
